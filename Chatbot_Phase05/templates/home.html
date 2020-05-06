@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html>
+  <title>George - Your MSIST Chatbot</title>
+  <head>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="\static\george.jpg"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+      body {
+        font-family: monospace;
+      }
+      h1 {
+        background-color: #004065;
+        color: white;
+        display: inline-grid;
+        font-size: 3em;
+        margin: 0;
+        padding: 14px;
+      }
+      h3 {
+        color: black;
+        font-size: 20px;
+        margin-top: 3px;
+        text-align: center;
+      }
+      #chatbox {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        margin-top: 60px;
+      }
+      #userInput {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        margin-top: 60px;
+      }
+      #textInput {
+        width: 90%;
+        border: none;
+        border-bottom: 3px solid black;
+        font-family: monospace;
+        font-size: 17px;
+      }
+      .userText {
+        color: white;
+        font-family: monospace;
+        font-size: 17px;
+        text-align: right;
+        line-height: 30px;
+      }
+      .userText span {
+        background-color: #808080;
+        padding: 10px;
+        border-radius: 2px;
+      }
+      .botText {
+        color: white;
+        font-family: monospace;
+        font-size: 17px;
+        text-align: left;
+        line-height: 30px;
+      }
+      .botText span {
+        background-color: #004065;
+        padding: 10px;
+        border-radius: 2px;
+      }
+      #tidbit {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 300px;
+      }
+      .boxed {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        margin-top: 60px;
+        border: 1px solid #004065;
+      }
+      .box {
+        border: 2px solid black;
+      }
+
+      /* unvisited link */
+      a:link {
+        color: yellow;
+      }
+      /* visited link */
+      a:visited {
+        color: lightgreen;
+      }
+
+      /* mouse over link */
+      a:hover {
+        color: red;
+      }
+
+      /* selected link */
+      a:active {
+        color: grey;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <img />
+    <center>
+      <h1 color:white;>
+        <img
+          src="\static\george.jpg"
+          alt="GEORGE"
+          style="width:60px;height:60px;"
+        />Your MSIST Chatbot
+      </h1>
+      <<!-- h2 id="" -->
+    </center>
+   
+    <div class="box"></div>
+    <div class="boxed">
+      <div>
+        <div id="chatbox">
+          <img
+            src="\static\george.jpg"
+            alt="GEORGE"
+            style="width:40px;height:40px;"
+          />
+          <p class="botText">
+            <span>Hi! I'm George your personal ChatBot <br> I am here to help with your MSIST departmental queries. </span>
+          </p>
+        </div>
+        <div id="userInput">
+          <input id="textInput" type="text" name="msg" placeholder="Enter Text for conversation or type quit to exit" />
+        </div>
+      </div>
+      <script>
+        
+        function sleep(milliseconds) {
+        const date = Date.now();
+        let currentDate = null;
+        do {
+        currentDate = Date.now();
+        } 
+        while (currentDate - date < milliseconds);
+      } 
+        function getBotResponse() {
+          var rawText = $("#textInput").val();
+          var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+          document
+            .getElementById("userInput")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+          $.get("/get", { msg: rawText }).done(function(data) {
+            var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+            $("#chatbox").append(botHtml);
+
+            document
+              .getElementById("userInput")
+              .scrollIntoView({ block: "start", behavior: "smooth" });
+              
+              if(rawText == "quit")
+              {
+                  sleep (100)
+                  window.location.replace("/static/feedback.html");
+                }
+              // var variable = document.getElementById("userInput").innerHTML;
+
+              // if(variable =="quit")
+              //        window.location.replace("http://www.w3schools.com");
+          });
+        }
+
+        $("#textInput").keypress(function(e) {
+          if (e.which == 13) {
+            getBotResponse();
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,162 @@
+<html>
+    <head>
+       <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <style type="text/css">
+    	
+	    *{
+			margin:0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Poppins', sans-serif;
+
+		}
+		body
+		{
+	
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			background: #20152d;
+		}
+
+		.rating
+		{
+			position: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: row-reverse;
+		}
+		
+		.send
+		{
+			position: center;
+			justify-content: center;
+			align-items: center;
+			display: block;
+		}
+
+		.rating input[type=radio]
+		{
+			display: none;
+			position: center;
+			justify-content: center;
+			align-items: center;
+		}
+		
+
+		.send input[type=submit]
+		{
+			position: center;
+			display: block;
+
+		}
+
+
+		.rating label
+		{
+			position: center;
+			width: 0;
+			height: 128px;
+			cursor: pointer;
+			transition: 0.5s;
+			filter:grayscale(1);
+			text-align: center;
+			opacity: 0;
+		}
+
+		.rating:hover label
+		{
+			width: 160px;
+			opacity: 0.6;
+		}
+
+		.rating input[type=radio]:hover + label,
+		.rating input[type=radio]:checked + label
+		{
+			filter: grayscale(0);
+			opacity: 1;
+			width: 160px;
+		}
+
+		.rating label h4
+		{
+			color: #fff;
+			font-size: 24px;
+			padding-top: 10px;
+			font-weight: 500;
+			white-space: nowrap;
+			opacity: 0;
+			transform: translateY(-50px) scale(0);
+			transition: 0.5s;
+
+		}
+
+		.rating input[type=radio]:hover + label h4,
+		.rating input[type=radio]:checked + label h4
+		{
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+
+		img
+		{
+		 height: 100;
+		 width: 100;
+		}
+
+		.text
+		{
+			position: center;
+			top: -80px;
+			color: #fff;
+			font-weight: 700;
+			letter-spacing: 2px;
+			text-align: center;
+			white-space: nowrap;
+			font-size: 26;
+		}
+
+	</style>
+	</head>
+    <body>
+    	<form method ="POST" action="/feedback">
+
+    		<h2 class="text"> Thank you for having a conversation with George 
+       			<br> We would love to get your Feedback!</h2><br><br>
+       
+       	<div class="rating">
+       	
+       		<input type="radio" name="meter" id="1" value="1" checked="checked">
+       		<label for="1">
+       			<img src="smiling.png">
+       			<h4>Loved It</h4>
+       		</label>
+       		<input type="radio" name="meter" id="2" value="2">
+       		<label for="2">
+       			<img src="happy.png">
+       			<h4>Liked It</h4>
+       		</label>
+       		<input type="radio" name="meter" id="3"  value="3">
+       		<label for="3">
+       			<img src="neutral.png">
+       			<h4>Not Bad</h4>
+       		</label>
+       		<input type="radio" name="meter" id="4" value="4">
+       		<label for="4">
+       			<img src="ok.png">
+       			<h4>Unsatisfied</h4>
+       		</label>
+       		<input type="radio" name="meter" id="5" value="5">
+       		<label for="5">
+       			<img src="angry.png">
+       			<h4>Extremely<br> Unsatisfied</h4>
+       		</label>
+       	</div> <br><br><br>
+       	<div class="send">
+       	<input type="submit" value="Submit" style="width: 300px; margin: 0 auto;">
+       </div>
+       </form>
+    </body>
+</html>
