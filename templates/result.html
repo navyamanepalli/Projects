@@ -1,0 +1,81 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Prediction Result</title>
+    <style>
+    html, body {
+        margin: 0;
+        height: 80%;
+    }
+
+    body {
+      margin: 20% auto;
+        text-align: center;
+        background: #0F2027;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+      }
+
+    .container {
+        padding: 2px 2px 16px 2px;
+        margin: 20% auto;
+        text-align: center;
+        width: 60%;
+        border-radius: 4px;
+        color: white;
+        background-color: rgb(115, 185, 215);
+    }
+
+    p {
+        font-size: 20px;
+        color: rgb(207, 181, 12);
+        font-family: Arial;
+    }
+
+    h4 {
+        font-size: 25px;
+        font-family: Arial;
+        color: rgb(250, 176, 27);
+    }
+
+    a {
+        font-family: Georgia;
+        outline: none;
+        text-decoration: none;
+        display: inline-block;
+        width: 40%;
+        margin-right: 0.625%;
+        text-align: center;
+        line-height: 3;
+        color: rgb(255, 255, 255);
+      }
+
+    a:focus {
+      border-bottom: 1px solid;
+      background: #BAE498;
+    }
+
+    a:hover {
+      border-bottom: 1px solid;
+      background: rgb(247, 176, 35);
+    }
+
+    a:active {
+      background: #265301;
+      color: rgb(247, 176, 35);
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <p>The predicted document type is: </p>
+        <h4>{{result}}</h4>
+        <p>And confidence is: </p>
+        <h4>{{confidence}}</h4>
+        <a href="/">Click here to predict another document type</a>
+    </div>
+  </body>
+</html>
